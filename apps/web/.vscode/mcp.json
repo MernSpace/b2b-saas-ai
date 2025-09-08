@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "Sentry": {
+      "url": "https://mcp.sentry.dev/mcp/echo-t7/echo",
+      "type": "http"
+    }
+  }
+}
