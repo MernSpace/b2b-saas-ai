@@ -3,12 +3,13 @@
     "type": "module",
     "scripts": {
         "dev": "convex dev",
-        "setup": "convex dev --unlit-success"
+        "setup": "convex dev --until-success"
     },
     "exports": {
         "./convex": "./convex/*.ts"
     },
     "devDependencies": {
+        "@types/node": "^20.19.9",
         "@workspace/typescript-config": "workspace:*",
         "typescript": "latest"
     },
