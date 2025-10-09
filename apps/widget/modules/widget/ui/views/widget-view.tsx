@@ -8,7 +8,7 @@ import { WidgetErrorScreen } from "../screens/widget-error-screen"
 import { WidgetLoadingScreen } from "../screens/widget-loading-screen"
 
 interface Props {
-    organizationId: string
+    organizationId: string | null
 }
 
 

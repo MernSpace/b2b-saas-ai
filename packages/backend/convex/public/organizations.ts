@@ -3,7 +3,7 @@ import { action } from "../_generated/server";
 import { createClerkClient } from "@clerk/backend";
 
 const clerkClient = createClerkClient({
-    secretKey: process.env.CLERK_SECRET_KEY,
+    secretKey: process.env.CLERK_SECRET_KEY || ""
 })
 export const validate = action({
     args: {
@@ -16,9 +16,9 @@ export const validate = action({
         })
         if (organization) {
 
-            return { void: true }
+            return { valid: true }
         } else {
-            return { void: false, reason: "Organization not valid" }
+            return { valid: false, reason: "Organization not valid" }
         }
 
     }

@@ -39,7 +39,7 @@ export const WidgetLoadingScreen = ({ organizationId }: { organizationId: string
         setLoadingMessage("Verifying organization...")
         validateOrganization({ organizationId })
             .then((result) => {
-                if (result.void) {
+                if (result.valid) {
                     setOrganizationId(organizationId)
                     setStep("session")
                 } else {
@@ -47,7 +47,12 @@ export const WidgetLoadingScreen = ({ organizationId }: { organizationId: string
                     setScreen("error")
                 }
             })
+            .catch(() => {
+                setErrorMessage("Unable to verify organization")
+                setScreen("error")
+            })
     }, [step, organizationId, setErrorMessage, setScreen, setOrganizationId, setStep, validateOrganization, setLoadingMessage])
+
     // Step 2: validate session (if exists)
     const validateContactSession = useMutation(api.public.contactSessions.validate)
     useEffect(() => {
@@ -65,7 +70,7 @@ export const WidgetLoadingScreen = ({ organizationId }: { organizationId: string
         validateContactSession({
             contactSessionId,
         }).then((result) => {
-            setSessionValid(result.void)
+            setSessionValid(result.valid)
             setStep("done")
         }).catch(() => {
             setSessionValid(false)
