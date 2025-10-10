@@ -16,7 +16,7 @@ export const WidgetChatScreen = () => {
     const organizationId = useAtomValue(organizationIdAtom)
     const contactSessionId = useAtomValue(
         contactSessionIdAtomFamily(organizationId || "")
-    );;
+    );
 
     const conversation = useQuery(
         api.public.conversations.getOne,

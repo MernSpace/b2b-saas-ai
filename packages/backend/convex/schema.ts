@@ -10,7 +10,7 @@ export default defineSchema({
         contactSessionId: v.id("contactSessions"),
         status: v.union(
             v.literal("unresolved"),
-            v.literal("escaleted"),
+            v.literal("escalated"),
             v.literal("resolved")
         ),
     })
