@@ -1,5 +1,8 @@
 import { ConvexError, v } from "convex/values";
 import { mutation, query } from "../_generated/server";
+import { supportAgent } from "../system/ai/supportAgent";
+import { saveMessage } from "@convex-dev/agent";
+import { components } from "../_generated/api";
 
 
 export const getOne = query({
@@ -20,6 +23,13 @@ export const getOne = query({
 
         if (!conversation) {
             return null;
+        }
+
+        if (conversation.contactSessionId !== session._id) {
+            throw new ConvexError({
+                code: "UNAUTHORIZED",
+                message: "Invalid session"
+            })
         }
 
         return {
@@ -45,7 +55,18 @@ export const create = mutation({
                 message: "Invalid session"
             })
         }
-        const threadId = "123"
+        const { threadId } = await supportAgent.createThread(ctx, {
+            userId: args.organizationId
+        })
+
+
+        await saveMessage(ctx, components.agent, {
+            threadId,
+            message: {
+                role: "assistant",
+                content: "Hello, how can I help you today?"
+            }
+        })
 
         const conversationsId = await ctx.db.insert("conversations", {
             contactSessionId: session._id,
