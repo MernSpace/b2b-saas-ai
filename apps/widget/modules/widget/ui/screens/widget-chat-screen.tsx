@@ -99,12 +99,12 @@ export const WidgetChatScreen = () => {
             return;
         }
 
+        form.reset()
         await createMessage({
             threadId: conversation.thread,
             prompt: values.message,
             contactSessionId: contactSessionId
         })
-        form.reset()
     }
 
     return (
@@ -146,7 +146,7 @@ export const WidgetChatScreen = () => {
                                 </AIMessageContent>
                                 {message.role === "assistant" && (
                                     <DicebearAvater
-                                        imageUrl="/log.svg"
+                                        imageUrl="/logo.svg"
                                         seed="assistant"
                                         size={32}
                                     />

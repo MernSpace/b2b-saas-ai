@@ -6,7 +6,7 @@ import { useMemo } from "react"
 
 import { Avatar, AvatarImage } from "@workspace/ui/components/avatar"
 
-import { cn } from "@workspace/ui/lib/utils.js"
+import { cn } from "@workspace/ui/lib/utils"
 
 
 interface DicebearProps {
