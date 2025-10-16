@@ -56,7 +56,7 @@ export const ConversationsPanel = () => {
                     )}
                 >
                     <SelectTrigger
-                        className="h-8 border-none px-1.5 shadow-none ring-0 hover:bg-accent hover:text-accent-foreground focus-visible:right-0"
+                        className="h-8 border-none px-1.5 shadow-none ring-0 hover:bg-accent hover:text-accent-foreground focus-visible:ring-0"
                     >
                         <SelectValue placeholder="Filter" />
                     </SelectTrigger>
