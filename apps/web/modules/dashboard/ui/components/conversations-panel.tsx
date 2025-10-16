@@ -96,17 +96,21 @@ export const ConversationsPanel = () => {
                         {Conversations.results.map((conversation) => {
                             const isLastMessageFromOperator = conversation.lastMessage?.message?.role !== "user";
                             const country = getCountryFromTimezone(conversation.contactSession.metadata?.timezone)
-
+                            const isActive = pathname === `/conversations/${conversation._id}`;
 
                             const countryFlagUrl = country?.code ? getCountryFlagUrl(country.code)
                                 : undefined
                             return (
                                 <Link
                                     key={conversation._id}
-                                    className={cn("relative flex cursor-pointer items-start gap-3 border-b p-4 py-5 text-sm leading-tight hover:bg-accent hover:text-accent-foreground", pathname === `/conversations/${conversation._id}` && "border-accent text-accent-foreground")}
+                                    className={cn(
+                                        "relative flex cursor-pointer items-start gap-3 border-b p-4 py-5 text-sm leading-tight hover:bg-accent hover:text-accent-foreground",
+                                        isActive && "bg-accent text-accent-foreground"
+                                    )}
                                     href={`/conversations/${conversation._id}`}>
-                                    <div className={cn("-translate-y-1/2 absolute top-1/2 left-0 h-[64%] rounded-r-full bg-neutral-300 opacity-0 transition-opacity",
-                                        pathname === `/conversations/${conversation._id}` && "opacity-100"
+                                    <div className={cn(
+                                        "absolute left-0 top-1/2 h-[64%] w-1 -translate-y-1/2 rounded-r-full bg-primary opacity-0 transition-opacity",
+                                        isActive && "opacity-100"
                                     )} />
                                     <DicebearAvater
                                         seed={conversation.contactSession._id}
