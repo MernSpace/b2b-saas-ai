@@ -80,13 +80,13 @@ export const UploadDialog = ({
                         Upload Document
                     </DialogTitle>
                     <DialogDescription>
-                        Upload documents to your knowledge base for AI-power search and retrieval
+                        Upload documents to your knowledge base for AI-powered search and retrieval
                     </DialogDescription>
                 </DialogHeader>
                 <div className="space-y-4">
                     <div className="space-y-2">
                         <Label htmlFor="category">
-                            Calegory
+                            Category
                         </Label>
                         <Input
                             className="w-full"

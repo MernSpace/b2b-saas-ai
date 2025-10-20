@@ -7,9 +7,9 @@ import { Id } from "../_generated/dataModel";
 
 
 const AI_MODELS = {
-    image: google.languageModel("text-embedding-004"),
-    pdf: google.languageModel("text-embedding-004"),
-    html: google.languageModel("text-embedding-004")
+    image: google.languageModel("gemini-2.0-flash-exp"),
+    pdf: google.languageModel("gemini-2.0-flash-exp"),
+    html: google.languageModel("gemini-2.0-flash-exp")
 } as const;
 
 

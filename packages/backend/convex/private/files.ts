@@ -231,7 +231,7 @@ async function convertEntryToPublicFile(
         }
     }
 
-    const filename = entry.key || "Unknow"
+    const filename = entry.key || "Unknown"
     const extension = filename.split(".").pop()?.toLowerCase() || "text";
     let status: "ready" | "processing" | "error" = "error"
 
