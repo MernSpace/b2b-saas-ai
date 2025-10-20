@@ -6,7 +6,7 @@ import rag from "../system/ai/rag";
 import { Id } from "../_generated/dataModel";
 
 
-function guessMineType(filename: string, bytes: ArrayBuffer): string {
+function guessMimeType(filename: string, bytes: ArrayBuffer): string {
     return (
         guessMimeTypeFromExtension(filename) || guessMimeTypeFromContents(bytes) || "application/octet-stream"
     )
@@ -104,7 +104,7 @@ export const addFile = action({
         }
 
         const { bytes, filename, category } = args;
-        const mimeType = args.mimeType || guessMineType(filename, bytes)
+        const mimeType = args.mimeType || guessMimeType(filename, bytes)
 
         const blob = new Blob([bytes], { type: mimeType })
         const storageId = await ctx.storage.store(blob)
