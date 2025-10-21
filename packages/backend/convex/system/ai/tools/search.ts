@@ -11,9 +11,9 @@ import { SEARCH_INTERPRETER_PROMPT } from "../constants";
 
 
 export const search = createTool({
-    description: "Search the knowledge base for relevent information to help answer user questions",
+    description: "Search the knowledge base for relevant information to help answer user questions",
     args: z.object({
-        query: z.string().describe("The search query to find relevent information")
+        query: z.string().describe("The search query to find relevant information")
     }),
     handler: async (ctx, args) => {
         if (!ctx.threadId) {
@@ -49,7 +49,7 @@ export const search = createTool({
                     content: `User asked:"${args.query}"\n\nSearch results:${contextText}`
                 }
             ],
-            model: google.chat("gemini-2.5-flash")
+            model: google("gemini-2.5-flash")
         })
 
         await supportAgent.saveMessage(ctx, {
